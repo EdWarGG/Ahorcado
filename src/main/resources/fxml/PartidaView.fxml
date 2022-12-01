@@ -11,22 +11,43 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="PartidaView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="partidaView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="palabraAResolver" prefHeight="50.0" text="Palabra a resolver">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="letrasFallidas" prefHeight="50.0" text="Letras fallidas">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+               <children>
+                  <Label fx:id="palabraAResolver" prefHeight="50.0" text="Palabra a resolver">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="letrasFallidas" prefHeight="50.0" text="Letras fallidas">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="80.0" prefWidth="100.0">
+               <children>
+                  <Label prefHeight="30.0" text="Vidas:">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="vidasLabel" prefHeight="30.0" text="9">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="90.0" />
+               </HBox.margin>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </center>
    <bottom>
       <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="5.0" BorderPane.alignment="CENTER">
@@ -41,12 +62,12 @@
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="ahorcadoImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/1.png" />
-               </image>
                <HBox.margin>
                   <Insets right="150.0" />
                </HBox.margin>
+               <image>
+                  <Image url="@../images/9.png" />
+               </image>
             </ImageView>
             <VBox alignment="CENTER" prefHeight="80.0" prefWidth="100.0">
                <children>
@@ -65,4 +86,7 @@
          </children>
       </HBox>
    </top>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </BorderPane>

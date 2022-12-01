@@ -2,11 +2,12 @@ package dad.ahorcado;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import dad.ahorcado.palabras.PalabrasController;
 import dad.ahorcado.partida.PartidaController;
-import dad.ahorcado.puntuacion.PuntuacionController;
+import dad.ahorcado.puntuaciones.PuntuacionesController;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -19,24 +20,20 @@ import javafx.scene.control.TabPane;
 
 public class RootController implements Initializable {
 	
-	// controllers
-	
+	// controllers	
 	private PalabrasController palabrasController = new PalabrasController(); 
 	private PartidaController partidaController = new PartidaController();
-	private PuntuacionController untuacionController = new PuntuacionController();
-
+	private PuntuacionesController puntuacionesController = new PuntuacionesController();
 	
-	// model
-	
+	// model	
 	private ListProperty<String> palabras = new SimpleListProperty<>(FXCollections.observableArrayList());
 	
-	// view
-	
+	// view	
 	@FXML
-	private TabPane view;
-	
+	private TabPane view;	
 	@FXML 
 	private Tab partidaTab, palabrasTab, puntuacionesTab;
+	
 	
 	public RootController() {
 		try {
@@ -44,31 +41,36 @@ public class RootController implements Initializable {
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			e.printStackTrace();
 		}
 	}
 
+	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {		
-		// bindings
-		palabrasController.palabrasProperty().bind(palabras);
+	public void initialize(URL location, ResourceBundle resources) {
+		//vistas de los tabs
+		partidaTab.setContent(partidaController.getView());
+		palabrasTab.setContent(palabrasController.getView());
+		puntuacionesTab.setContent(puntuacionesController.getView());
 		
+		// bindings
+		palabrasController.palabrasProperty().bind(palabras);		
 	}
+	
 	
 	public TabPane getView() {
 		return view;
 	}
 
+	public ArrayList<String> getPalabrasList() {
+		return new ArrayList<>(palabrasController.getPalabras());
+	}
 	public final ListProperty<String> palabrasProperty() {
 		return this.palabras;
 	}
-	
-
 	public final ObservableList<String> getPalabras() {
 		return this.palabrasProperty().get();
 	}
-	
-
 	public final void setPalabras(final ObservableList<String> palabras) {
 		this.palabrasProperty().set(palabras);
 	}

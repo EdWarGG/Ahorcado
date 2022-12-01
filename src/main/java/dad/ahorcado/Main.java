@@ -1,4 +1,3 @@
-
 package dad.ahorcado;
 
 public class Main {
